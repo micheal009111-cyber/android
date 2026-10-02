@@ -1,12 +1,13 @@
 Pusher Alert Android project
 
+Pusher cluster: ap2
 Channel: chat-channel
 Event: new-text
-Pusher cluster: ap2
 
-The app expects JSON such as:
-{"text1":"ALL","text2":"NQHIGH"}
+The project includes a Gradle launcher so Codemagic can build it even if the Gradle wrapper files were not generated locally.
 
-Build with Android Studio, then Run or Build > Generate App Bundle/APK > Generate APKs.
+Codemagic workflow: codemagic.yaml
+Build command: ./gradlew assembleDebug
+Artifact: app/build/outputs/apk/debug/app-debug.apk
 
-IMPORTANT: The Pusher secret is NOT included because an Android client must never contain the Pusher server secret.
+IMPORTANT: Never put the Pusher secret in the Android app. The Android client only needs the Pusher key and cluster.
